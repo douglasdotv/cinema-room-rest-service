@@ -56,4 +56,8 @@ public class CinemaRoom {
         return purchasedTickets.size();
     }
 
+    public synchronized List<Ticket> getPurchasedTickets() {
+        return this.purchasedTickets;
+    }
+
 }

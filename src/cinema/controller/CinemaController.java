@@ -1,13 +1,10 @@
 package cinema.controller;
 
-import cinema.domain.cinemaroom.CinemaRoomResponseDTO;
 import cinema.domain.seat.PurchaseRequestDTO;
-import cinema.domain.stats.CinemaRoomStatsResponseDTO;
-import cinema.domain.ticket.PurchaseResponseDTO;
 import cinema.domain.ticket.ReturnedTicketRequestDTO;
-import cinema.domain.ticket.ReturnedTicketResponseDTO;
 import cinema.service.CinemaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -23,23 +20,23 @@ public class CinemaController {
     }
 
     @GetMapping("/seats")
-    public CinemaRoomResponseDTO getAvailableSeats() {
-        return cinemaService.getAvailableSeats();
+    public ResponseEntity<?> getAvailableSeats() {
+        return ResponseEntity.ok(cinemaService.getAvailableSeats());
     }
 
     @PostMapping("/purchase")
-    public PurchaseResponseDTO purchaseTicket(@RequestBody PurchaseRequestDTO purchaseRequest) {
-        return cinemaService.purchaseTicket(purchaseRequest);
+    public ResponseEntity<?> purchaseTicket(@RequestBody PurchaseRequestDTO purchaseRequest) {
+        return ResponseEntity.ok(cinemaService.purchaseTicket(purchaseRequest));
     }
 
     @PostMapping("/return")
-    public ReturnedTicketResponseDTO returnTicket(@RequestBody ReturnedTicketRequestDTO ticket) {
-        return cinemaService.returnTicket(ticket);
+    public ResponseEntity<?> returnTicket(@RequestBody ReturnedTicketRequestDTO ticket) {
+        return ResponseEntity.ok(cinemaService.returnTicket(ticket));
     }
 
     @PostMapping("/stats")
-    public CinemaRoomStatsResponseDTO getStats(@RequestParam Optional<String> password) {
-        return cinemaService.getStats(password);
+    public ResponseEntity<?> getStats(@RequestParam Optional<String> password) {
+        return ResponseEntity.ok(cinemaService.getStats(password));
     }
 
 }
