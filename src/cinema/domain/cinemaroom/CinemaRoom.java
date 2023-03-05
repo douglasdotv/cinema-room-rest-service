@@ -1,6 +1,7 @@
 package cinema.domain.cinemaroom;
 
 import cinema.domain.seat.Seat;
+import cinema.domain.ticket.Ticket;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,6 +16,7 @@ public class CinemaRoom {
     private int totalRows;
     private int totalColumns;
     private List<Seat> availableSeats = new ArrayList<>();
+    private List<Ticket> purchasedTickets = new ArrayList<>();
 
     public CinemaRoom(int totalRows, int totalColumns) {
         this.totalRows = totalRows;

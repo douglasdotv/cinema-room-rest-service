@@ -5,9 +5,14 @@ import cinema.domain.cinemaroom.CinemaRoomResponseDTO;
 import cinema.domain.seat.PurchaseRequestDTO;
 import cinema.domain.ticket.PurchaseResponseDTO;
 import cinema.domain.seat.Seat;
+import cinema.domain.ticket.ReturnedTicketRequestDTO;
 import cinema.domain.ticket.Ticket;
+import cinema.domain.ticket.ReturnedTicketResponseDTO;
+import cinema.exception.InvalidTicketException;
 import cinema.exception.UnavailableSeatException;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 public class CinemaService {
@@ -28,6 +33,7 @@ public class CinemaService {
         cinemaRoomSeat.setPurchased(true);
 
         Ticket ticket = new Ticket(cinemaRoomSeat);
+        cinemaRoom.getPurchasedTickets().add(ticket);
         return new PurchaseResponseDTO(ticket);
     }
 
@@ -39,6 +45,20 @@ public class CinemaService {
         if (seat.isPurchased()) {
             throw new UnavailableSeatException("The ticket has been already purchased!");
         }
+    }
+
+    public ReturnedTicketResponseDTO returnTicket(ReturnedTicketRequestDTO ticket) {
+        UUID ticketToken = ticket.token();
+
+        Ticket returnedTicket = cinemaRoom.getPurchasedTickets().stream()
+                .filter(t -> t.getToken().equals(ticketToken))
+                .findFirst()
+                .orElseThrow(() -> new InvalidTicketException("Wrong token!"));
+
+        Seat cinemaRoomSeat = cinemaRoom.getSeat(returnedTicket.getRow(), returnedTicket.getColumn());
+        cinemaRoomSeat.setPurchased(false);
+
+        return new ReturnedTicketResponseDTO(returnedTicket);
     }
 
 }
