@@ -39,21 +39,4 @@ public class CinemaRoom {
                 .orElse(null);
     }
 
-    public int getCurrentIncome() {
-        return purchasedTickets.stream()
-                .mapToInt(Ticket::getPrice)
-                .sum();
-    }
-
-    public int getNumberOfAvailableSeats() {
-        return availableSeats.stream()
-                .filter(s -> !s.isPurchased())
-                .mapToInt(s -> 1)
-                .sum();
-    }
-
-    public int getNumberOfPurchasedTickets() {
-        return purchasedTickets.size();
-    }
-
 }

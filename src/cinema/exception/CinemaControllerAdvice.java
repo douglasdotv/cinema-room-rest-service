@@ -29,10 +29,4 @@ public class CinemaControllerAdvice {
         return Map.of("error", "Wrong token!");
     }
 
-    @ExceptionHandler(WrongPasswordException.class)
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    public Map<String, String> handleWrongPasswordException(WrongPasswordException ex) {
-        return Map.of("error", ex.getMessage());
-    }
-
 }
