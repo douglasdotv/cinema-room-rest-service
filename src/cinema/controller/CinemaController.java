@@ -2,7 +2,7 @@ package cinema.controller;
 
 import cinema.domain.cinemaroom.CinemaRoomResponseDTO;
 import cinema.domain.seat.PurchaseRequestDTO;
-import cinema.domain.seat.PurchaseResponseDTO;
+import cinema.domain.ticket.PurchaseResponseDTO;
 import cinema.service.CinemaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -3,8 +3,9 @@ package cinema.service;
 import cinema.domain.cinemaroom.CinemaRoom;
 import cinema.domain.cinemaroom.CinemaRoomResponseDTO;
 import cinema.domain.seat.PurchaseRequestDTO;
-import cinema.domain.seat.PurchaseResponseDTO;
+import cinema.domain.ticket.PurchaseResponseDTO;
 import cinema.domain.seat.Seat;
+import cinema.domain.ticket.Ticket;
 import cinema.exception.UnavailableSeatException;
 import org.springframework.stereotype.Service;
 
@@ -22,9 +23,12 @@ public class CinemaService {
     public PurchaseResponseDTO purchaseTicket(PurchaseRequestDTO purchaseRequest) {
         Seat requestedSeat = new Seat(purchaseRequest);
         Seat cinemaRoomSeat = cinemaRoom.getSeat(requestedSeat.getRow(), requestedSeat.getColumn());
+
         validateSeat(cinemaRoomSeat);
         cinemaRoomSeat.setPurchased(true);
-        return new PurchaseResponseDTO(cinemaRoomSeat);
+
+        Ticket ticket = new Ticket(cinemaRoomSeat);
+        return new PurchaseResponseDTO(ticket);
     }
 
     private void validateSeat(Seat seat) {
