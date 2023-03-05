@@ -172,7 +172,7 @@ response
 
 ### Exception handling
 
-The exception handling is done in the CinemaRoomControllerAdvice class, which is annotated with @RestControllerAdvice.
+The exception handling is done in the CinemaControllerAdvice class, which is annotated with @RestControllerAdvice.
 
 The program may throw the following exceptions when performing requests:
 - UnavailableSeatException — when trying to purchase a ticket and the seat is already taken or the row or column number is out of bounds
