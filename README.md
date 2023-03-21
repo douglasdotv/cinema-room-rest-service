@@ -5,18 +5,7 @@
 
 ### Project description
 
-This project is a RESTful service that allows one to manage a cinema room. It is a part of the [Cinema Room REST Service](https://hyperskill.org/projects/189) project from [JetBrains Academy](https://hyperskill.org/).
-
-### Learning outcomes
-
-While doing this project, I learned how to handle HTTP requests in controllers, create services and respond with JSON objects — including DTOs.
-
-### What I used
-
-- Java 17
-- Spring Boot 2.5.6
-- Lombok
-- Insomnia by Kong
+This project is a REST service that allows one to manage a cinema room.
 
 ### API endpoints
 
@@ -156,10 +145,7 @@ response
 - POST /stats — returns stats regarding the current income, the number of available seats and the number of purchased tickets (if the sent password is correct)
 
 #### Example
-```json 
-request
-@ParamRequest 123456
-```
+request: @ParamRequest 123456
 
 ```json 
 response
@@ -186,6 +172,26 @@ In such cases, the program will return a JSON object with the following structur
 }
 ```
 
+### What I used
+
+- Java 17
+- Spring Boot 2.5.6
+- Lombok
+  
+### What I learned
+
+While doing this project, I learned how to handle HTTP requests in controllers and respond with JSON objects and proper status codes.
+
+
+### How to run
+
+1. Open a terminal and clone this repository: _git clone https://github.com/douglasdotv/cinema-room-rest-service.git_
+2. Navigate to the project's root folder: _cd cinema-room-rest-service_
+3. Build the project: _./gradlew build_
+4. Run the application: _./gradlew bootRun_
+5. Access the available endpoints using a client (like Postman or Insomnia, for example)
+
+
 ### Additional notes
 
 - The cinema room has 9 rows and 9 columns, with a total of 81 seats.
@@ -196,5 +202,4 @@ In such cases, the program will return a JSON object with the following structur
 
 
 ### Contact
-
 If you have any questions or suggestions, feel free to contact me at [LinkedIn](https://www.linkedin.com/in/douglasdotv) or via email (douglas16722@gmail.com).

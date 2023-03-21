@@ -5,18 +5,7 @@
 
 ### Descrição do projeto
 
-Este projeto é um serviço RESTful que permite gerenciar uma sala de cinema. É parte do projeto [Cinema Room REST Service](https://hyperskill.org/projects/189) da [JetBrains Academy](https://hyperskill.org/).
-
-### Resultados de aprendizagem
-
-Ao fazer este projeto, aprendi a lidar com requisições HTTP em controladores, criar serviços e responder com objetos JSON — incluindo o emprego de DTOs.
-
-### Tecnologias utilizadas
-
-- Java 17
-- Spring Boot 2.5.6
-- Lombok
-- Insomnia by Kong
+Este projeto é um serviço REST que gerencia uma sala de cinema.
 
 ### Endpoints da API
 
@@ -156,10 +145,7 @@ response
 POST /stats — retorna estatísticas sobre o valor arrecadado, o número de assentos disponíveis e o número de ingressos comprados (se a senha passada for válida)
 
 #### Exemplo
-```json 
-request
-123456
-```
+request: @ParamRequest super_secret
 
 ```json 
 response
@@ -186,6 +172,16 @@ Nesses casos, o programa retorna um objeto JSON com o código de status HTTP 400
 }
 ```
 
+### O que foi usado
+
+- Java 17
+- Spring Boot 2.5.6
+- Lombok
+
+### O que aprendi
+
+Com este projeto, aprendi a lidar com requisições HTTP em controllers, e responder com objetos JSON e códigos HTTP adequados.
+
 
 ### Notas adicionais
 
@@ -193,9 +189,18 @@ Nesses casos, o programa retorna um objeto JSON com o código de status HTTP 400
 - As primeiras 4 filas possuem assentos com preço "10" e as últimas 5 filas possuem assentos com preço "8".
 - A tokenização de tickets é feita com objetos UUID.
 - A senha para acessar as estatísticas é "super_secret" e está visível na classe CinemaService. No entanto, poderia ser armazenada num arquivo de configuração ou numa variável de ambiente.
-- Não foi utilizado nenhum banco de dados nesse projeto, mas poderíamos utilizar o Spring Data JPA para persistir os dados em um banco de dados relacional, como o MySQL.
+- Não foi utilizado nenhum banco de dados nesse projeto, mas poderíamos utilizar o Spring Data JPA para persistir os dados em um banco de dados relacional.
 
 
-### Contact
+### Como rodar o projeto
 
-Se tiver dúvidas ou sugestões, sinta-se à vontade para entrar em contato comigo através do [LinkedIn](https://www.linkedin.com/in/douglasdotv) ou via email (douglas16722@gmail.com).
+1. Abra o terminal e clone o repositório: _git clone https://github.com/douglasdotv/cinema-room-rest-service.git_
+2. Navegue até a pasta raiz do projeto: _cd cinema-room-rest-service_
+3. Gere a build: _./gradlew build_
+4. Rode a aplicação: _./gradlew bootRun_
+5. Acesse os endpoints disponíveis utilizando um client como o Postman ou o Insomnia, por exemplo
+
+
+### Contato
+
+Se tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato comigo através do [LinkedIn](https://www.linkedin.com/in/douglasdotv) ou via email (douglas16722@gmail.com).
